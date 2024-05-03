@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Card,
   CardContent,
@@ -9,7 +8,8 @@ import {
 } from "@mui/material";
 import { AccessTime as AccessTimeIcon } from "@mui/icons-material";
 
-const JobCard = () => {
+const JobCard = ({data}:any) => {
+  console.log(data);
   return (
     <Card sx={{ maxWidth: 345, m: 2, boxShadow: 1, borderRadius: 5 }}>
       <CardContent>
