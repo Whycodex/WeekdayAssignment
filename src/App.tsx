@@ -1,8 +1,14 @@
-import React from 'react';
+import {Container} from "@mui/material";
+
+import Filters from "./components/filter";
+import JobCard from "./components/cards";
 
 const App = () => {
   return (
-    <h1>Hello World</h1>
+    <Container maxWidth="lg">
+      <Filters />
+      <JobCard />
+    </Container>
   );
 };
 
