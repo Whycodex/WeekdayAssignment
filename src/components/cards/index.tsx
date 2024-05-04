@@ -2,13 +2,13 @@ import JobCard from "./JobCard";
 import { Grid } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setJdList } from "../../redux/slices/dataSlice";
+import { setFilteredList, setJdList } from "../../redux/slices/dataSlice";
 import { fetchSampleData } from "../../services/apiService";
 
 function JobCards() {
   const dispatch = useDispatch();
-  const jdData = useSelector((store: any) => store.jdData.jdList);
-  // console.log(jdData[3]?.companyName)
+  const {jdList: jdData, filteredList} = useSelector((store: any) => store.jdData);
+  
   useEffect(() => {
     function handleScroll() {
       if (
@@ -32,13 +32,14 @@ function JobCards() {
     fetchSampleData(jdData.length)
     .then((res) => {
       dispatch(setJdList([...jdData, ...res.jdList]));
+      dispatch(setFilteredList([...jdData, ...res.jdList]));
     });
   },[])
 
   return (
     <>
     <Grid sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
-      {jdData.map((item: any, index: any) => (
+      {filteredList.map((item: any, index: any) => (
         <JobCard key={index} data={item} />
       ))}
     </Grid>

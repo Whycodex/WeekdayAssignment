@@ -10,8 +10,9 @@ const Filters = () => {
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
-        justifyContent: "center",
         gap: "5px",
+        mx: "auto",
+        width: "fit-content"
       }}
     >
       <Dropdown data={filterData.Roles} />

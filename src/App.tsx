@@ -7,7 +7,7 @@ import JobCards from "./components/cards";
 const App = () => {
   return (
     <Provider store={store}>
-      <Container maxWidth="xl">
+      <Container maxWidth="lg" >
         <Filters />
         <JobCards />
       </Container>

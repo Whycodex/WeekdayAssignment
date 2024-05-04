@@ -1,18 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const dataSlice:any = createSlice({
-    name: "jdData",
-    initialState: {
-        jdList: [],
+const dataSlice: any = createSlice({
+  name: "jdData",
+  initialState: {
+    jdList: [],
+    filteredList: [],
+  },
+  reducers: {
+    setJdList: (state, action) => {
+      state.jdList = action.payload;
     },
-    reducers: {
-        setJdList: (state, action) => {
-            state.jdList = action.payload;
-        },
+    setFilteredList: (state, action) => {
+      state.filteredList = action.payload;
     },
+  },
 });
 
-export const { setJdList } = dataSlice.actions;
+export const { setJdList, setFilteredList } = dataSlice.actions;
 
 export default dataSlice.reducer;
-
