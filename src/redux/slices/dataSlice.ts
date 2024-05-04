@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const dataSlice:any = createSlice({
     name: "jdData",
     initialState: {
-        jdList: [1,2,3],
+        jdList: [],
     },
     reducers: {
         setJdList: (state, action) => {

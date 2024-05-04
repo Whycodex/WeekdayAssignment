@@ -1,5 +1,7 @@
-import { Box, Grid, Toolbar } from "@mui/material";
-import Role from "./Role";
+import { Grid } from "@mui/material";
+import Dropdown from "./Dropdown";
+import filterData from "../../utils/FilterData";
+import SearchBox from "./SearchBox";
 
 const Filters = () => {
   return (
@@ -8,15 +10,16 @@ const Filters = () => {
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
+        justifyContent: "center",
         gap: "5px",
       }}
     >
-      <Role />
-      <Role />
-      <Role />
-      <Role />
-      <Role />
-      <Role />
+      <Dropdown data={filterData.Roles} />
+      <Dropdown data={filterData.Employees} />
+      <Dropdown data={filterData.Experience} />
+      <Dropdown data={filterData.Remote} />
+      <Dropdown data={filterData.Salary} />
+      <SearchBox placeholder="Search Company Name" />
     </Grid>
   );
 };

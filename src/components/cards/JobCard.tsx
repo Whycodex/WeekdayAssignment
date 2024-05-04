@@ -5,67 +5,165 @@ import {
   Button,
   Chip,
   Grid,
+  Avatar,
+  AvatarGroup,
 } from "@mui/material";
-import { AccessTime as AccessTimeIcon } from "@mui/icons-material";
+import {
+  HourglassTopOutlined as HourGlassIcon,
+  CheckBox as CheckIcon,
+  FlashOnOutlined as FlashOnIcon,
+} from "@mui/icons-material";
 
-const JobCard = ({data}:any) => {
-  console.log(data);
+const JobCard = ({ data = {} }: any) => {
   return (
-    <Card sx={{ maxWidth: 345, m: 2, boxShadow: 1, borderRadius: 5 }}>
-      <CardContent>
+    <Card
+      sx={{
+        maxWidth: 330,
+        maxHeight: 630,
+        m: 2,
+        boxShadow: 2,
+        borderRadius: "20px",
+        transition: "box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out",
+        "&:hover": {
+          boxShadow: "0px 6px 12px rgba(0,0,0,0.2)",
+          transform: "scale(1.003)",
+        },
+      }}
+    >
+      <CardContent sx={{ position: "relative" }}>
         <Chip
-          icon={<AccessTimeIcon />}
+          icon={<HourGlassIcon sx={{ height: 12, width: 12 }} />}
           label="Posted 10 days ago"
           size="small"
           sx={{
             mb: 2,
             backgroundColor: "transparent",
-            color: "black",
-            border: "1px solid grey",
+            color: "#0f0f0f",
+            border: "1px solid #d0d0d0",
+            borderRadius: 2.5,
+            fontSize: 10,
+            boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
           }}
         />
         <Grid sx={{ display: "flex", alignItems: "center" }}>
-          <Typography variant="h1">h</Typography>
+          <Avatar
+            src={data.logoUrl}
+            alt="logo"
+            sx={{ width: 60, height: 60, borderRadius: 0, marginRight: 2 }}
+          />
           <Grid>
-            <Typography variant="h6" component="div" color="text.secondary">
-              company
+            <Typography
+              sx={{ fontSize: 14, color: "#c0c0c0", fontWeight: 600 }}
+            >
+              {data.companyName}
             </Typography>
-            <Typography variant="h6" component="div">
-              Backend Engineer
-            </Typography>
-            <Typography variant="caption" sx={{ mb: 1.5 }}>
-              Bangalore
-            </Typography>
+            <Typography sx={{ fontSize: 14 }}>{data.jobRole}</Typography>
+            <Typography sx={{ fontSize: 12 }}>{data.location}</Typography>
           </Grid>
         </Grid>
-        <Typography variant="body2" color="text.secondary">
-          Estimated Salary: ₹18 - 35 LPA
+        <Grid sx={{ mt: 1, display: "flex" }}>
+          <Typography sx={{ fontSize: 14, color: "#707070" }}>
+            Estimated Salary: ₹{data.minJdSalary} - {data.maxJdSalary} LPA
+          </Typography>
+          <CheckIcon
+            sx={{ width: 18, height: 18, color: "green", marginLeft: 1 }}
+          />
+        </Grid>
+        <Typography sx={{ fontSize: 16, mt: 2 }}>About Company:</Typography>
+        <Typography sx={{ fontSize: 14, fontWeight: 600 }}>About us</Typography>
+        <Typography sx={{ fontSize: 14 }}>
+          {data.jobDetailsFromCompany.slice(0, 480)}
         </Typography>
-        <Typography variant="body1" sx={{ mt: 2 }}>
-          About Company:
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          FamPay is building India's first neo-bank exclusively for teens.
-          FamPay helps teens make their own online and offline payments through
-          UPI, FamPay App and FamCard. Our aim is to make banking cool for teens
-          and to help them learn the value of money, savings and spending
-          wisely. We are on a mission to raise a new, financially-aware
-          generation, and drive 250 Million+ Indian teenagers to kickstart their
-          financial journey super early in their life.
-        </Typography>
-        <Button variant="text" color="primary" sx={{ mt: 2 }}>
+        <Typography
+          sx={{
+            textAlign: "center",
+            position: "absolute",
+            bottom: "180px",
+            left: "40%",
+            zIndex: "10",
+            cursor: "pointer",
+            color: "blue",
+            fontSize: 14,
+          }}
+        >
           View job
-        </Button>
-        <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+        </Typography>
+        <Grid
+          sx={{
+            padding: "100px",
+            position: "absolute",
+            bottom: "170px",
+            background: "linear-gradient(to top, white, transparent)",
+            width: "100%",
+          }}
+        ></Grid>
+        <Typography
+          sx={{ mt: 4, fontSize: 14, color: "#989898", fontWeight: 600 }}
+        >
           Minimum Experience
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          2 years
-        </Typography>
-        <Button variant="contained" color="primary" sx={{ mt: 2, mb: 2 }}>
+        <Typography sx={{ fontSize: 14 }}>2 years</Typography>
+
+        <Button
+          variant="contained"
+          sx={{
+            mt: 2,
+            backgroundColor: "#00FFAB",
+            color: "#000",
+            width: "100%",
+            borderRadius: "8px",
+            boxShadow: "none",
+            "&:hover": {
+              backgroundColor: "#00DD9A",
+              boxShadow: "none",
+            },
+            textTransform: "none",
+            fontSize: "14px",
+            // fontWeight: 600,
+            padding: "8px 16px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <FlashOnIcon sx={{ color: "#eee000", marginRight: 1 }} />
           Easy Apply
         </Button>
-        <Button variant="outlined" color="primary">
+
+        <Button
+          variant="contained"
+          sx={{
+            mt: 1,
+            backgroundColor: "#6200EA",
+            color: "white",
+            borderRadius: "8px",
+            width: "100%",
+            boxShadow: "none",
+            "&:hover": {
+              backgroundColor: "#5A00D2",
+              boxShadow: "none",
+            },
+            textTransform: "none",
+            fontSize: "14px",
+            fontWeight: 600,
+            padding: "8px 16px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <AvatarGroup max={2}>
+            <Avatar
+              sx={{ height: 22, width: 22 }}
+              alt="Person 1"
+              src="/static/images/avatar/1.jpg"
+            />
+            <Avatar
+              sx={{ height: 22, width: 22, marginRight: 1 }}
+              alt="Person 2"
+              src="/static/images/avatar/2.jpg"
+            />
+          </AvatarGroup>
           Unlock referral asks
         </Button>
       </CardContent>
