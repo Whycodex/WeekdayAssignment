@@ -35,8 +35,8 @@ const JobCard = ({ data }: JobCardProps) => {
     <Card
       sx={{
         maxWidth: 330,
-        maxHeight: 630,
-        m: 2,
+        maxHeight: 700,
+        margin: 2,
         boxShadow: 2,
         borderRadius: "20px",
         transition: "box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out",

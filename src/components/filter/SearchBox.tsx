@@ -25,6 +25,7 @@ const SearchBox = ({ placeholder }: { placeholder: string }) => {
           padding: "10px 14px",
         },
         fontSize: "12px",
+        minWidth: "180px"
       }}
       placeholder={placeholder}
       value={searchQuery}

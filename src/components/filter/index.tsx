@@ -11,7 +11,7 @@ const Filters = () => {
         flexDirection: "row",
         flexWrap: "wrap",
         gap: "5px",
-        mx: "auto",
+        mx: "20px",
         width: "fit-content"
       }}
     >

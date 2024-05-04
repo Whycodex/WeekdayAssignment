@@ -52,7 +52,7 @@ const Dropdown = ({
   return (
     <FormControl>
       <Select
-        sx={{ minWidth: 150, height: 40 }}
+        sx={{ minWidth: 180, height: 40 }}
         multiple
         value={selectedEntries}
         onChange={handleChange}

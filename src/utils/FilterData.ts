@@ -4,7 +4,7 @@ const filterData = {
       entries: ["Backend", "Frontend", "FullStack", "Ios", "Flutter", "React Native", "Android"],
     },
     Employees: {
-      placeholder: "Select Number of Employees",
+      placeholder: "Select No of Employees",
       entries: ["1-10", "11-20", "21-50", "51-100", "101-200","200+"],
     },
     Experience: {
