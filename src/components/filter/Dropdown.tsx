@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   FormControl,
   Select,
@@ -7,30 +7,8 @@ import {
   OutlinedInput,
   Chip,
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilteredList, setJdList } from "../../redux/slices/dataSlice";
-
-const CustomOutlinedInput = styled(OutlinedInput)({
-  "& .MuiOutlinedInput-input": {
-    padding: "10px 14px",
-  },
-});
-
-const CustomChip = styled(Chip)({
-  height: 26,
-  borderRadius: "4px",
-  padding: "0 8px",
-  margin: "2px",
-  fontSize: "10px",
-  justifyContent: "space-between",
-  "& .MuiChip-deleteIcon": {
-    color: "black",
-    "&:hover": {
-      color: "red",
-    },
-  },
-});
+import { setFilteredList } from "../../redux/slices/dataSlice";
 
 const Dropdown = ({
   data,
@@ -49,14 +27,12 @@ const Dropdown = ({
       dispatch(
         setFilteredList(
           jdData.filter((job: any) => {
-            return value.length ? value.includes(job.jobRole): true;
+            return value.length ? value.includes(job.jobRole) : true;
           })
         )
       );
       return value;
-    }
-      
-    );
+    });
   }
 
   const handleChange = (event: SelectChangeEvent<typeof selectedEntries>) => {
@@ -65,14 +41,13 @@ const Dropdown = ({
       dispatch(
         setFilteredList(
           jdData.filter((job: any) => {
-            return value.length ? value.includes(job.jobRole): true;
+            return value.length ? value.includes(job.jobRole) : true;
           })
         )
       );
       return value;
     });
   };
-
 
   return (
     <FormControl>
@@ -81,15 +56,16 @@ const Dropdown = ({
         multiple
         value={selectedEntries}
         onChange={handleChange}
-        input={<CustomOutlinedInput notched={selectedEntries.length === 0} />}
-        // MenuProps={{
-        //   PaperProps: {
-        //     style: {
-        //       maxHeight: 300,
-        //       width: 100,
-        //     },
-        //   },
-        // }}
+        input={
+          <OutlinedInput
+            sx={{
+              "& .MuiOutlinedInput-input": {
+                padding: "10px 14px",
+              },
+            }}
+            notched={selectedEntries.length === 0}
+          />
+        }
         displayEmpty
         renderValue={(selected) => {
           if (selected.length === 0) {
@@ -100,7 +76,15 @@ const Dropdown = ({
             );
           }
           return selected.map((value) => (
-            <CustomChip
+            <Chip
+              sx={{
+                height: 26,
+                borderRadius: "4px",
+                padding: "0 8px",
+                margin: "2px",
+                fontSize: "10px",
+                justifyContent: "space-between",
+              }}
               key={value}
               label={value}
               onDelete={() => handleDelete(value)}

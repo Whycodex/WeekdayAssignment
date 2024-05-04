@@ -1,16 +1,34 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const dataSlice: any = createSlice({
+interface JobDescription {
+  jdUid: string;
+  logoUrl: string;
+  companyName: string;
+  jobRole: string;
+  location: string;
+  minJdSalary: number;
+  maxJdSalary: number;
+  jobDetailsFromCompany: string;
+}
+
+interface DataState {
+  jdList: JobDescription[];
+  filteredList: JobDescription[];
+}
+
+const initialState: DataState = {
+  jdList: [],
+  filteredList: [],
+};
+
+const dataSlice = createSlice({
   name: "jdData",
-  initialState: {
-    jdList: [],
-    filteredList: [],
-  },
+  initialState,
   reducers: {
-    setJdList: (state, action) => {
+    setJdList: (state, action: PayloadAction<JobDescription[]>) => {
       state.jdList = action.payload;
     },
-    setFilteredList: (state, action) => {
+    setFilteredList: (state, action: PayloadAction<JobDescription[]>) => {
       state.filteredList = action.payload;
     },
   },

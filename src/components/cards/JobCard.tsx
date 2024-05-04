@@ -14,7 +14,23 @@ import {
   FlashOnOutlined as FlashOnIcon,
 } from "@mui/icons-material";
 
-const JobCard = ({ data = {} }: any) => {
+interface JobData {
+  jdUid: string;
+  logoUrl: string;
+  companyName: string;
+  jobRole: string;
+  location: string;
+  minExp: number;
+  minJdSalary: number;
+  maxJdSalary: number;
+  jobDetailsFromCompany: string;
+}
+
+interface JobCardProps {
+  data: JobData;
+}
+
+const JobCard = ({ data }: JobCardProps) => {
   return (
     <Card
       sx={{
@@ -102,7 +118,7 @@ const JobCard = ({ data = {} }: any) => {
         >
           Minimum Experience
         </Typography>
-        <Typography sx={{ fontSize: 14 }}>2 years</Typography>
+        <Typography sx={{ fontSize: 14 }}>{data.minExp} years</Typography>
 
         <Button
           variant="contained"
@@ -119,7 +135,6 @@ const JobCard = ({ data = {} }: any) => {
             },
             textTransform: "none",
             fontSize: "14px",
-            // fontWeight: 600,
             padding: "8px 16px",
             display: "flex",
             alignItems: "center",
@@ -156,12 +171,12 @@ const JobCard = ({ data = {} }: any) => {
             <Avatar
               sx={{ height: 22, width: 22 }}
               alt="Person 1"
-              src="/static/images/avatar/1.jpg"
+              src="https://cdn-icons-png.freepik.com/512/7235/7235981.png"
             />
             <Avatar
               sx={{ height: 22, width: 22, marginRight: 1 }}
               alt="Person 2"
-              src="/static/images/avatar/2.jpg"
+              src="https://cdn-icons-png.freepik.com/512/7235/7235981.png"
             />
           </AvatarGroup>
           Unlock referral asks
