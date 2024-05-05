@@ -10,7 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { setFilteredList } from "../../redux/slices/dataSlice";
 
-const Dropdown = ({
+const DropdownBox = ({
   data,
 }: {
   data: { placeholder: string; entries: string[] };
@@ -107,4 +107,4 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;
+export default DropdownBox;

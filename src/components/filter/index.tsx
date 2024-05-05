@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
-import Dropdown from "./Dropdown";
-import filterData from "../../utils/FilterData";
+import DropdownBox from "./DropdownBox";
+import { filterData } from "../../utils/data";
 import SearchBox from "./SearchBox";
 
 const Filters = () => {
@@ -15,11 +15,11 @@ const Filters = () => {
         width: "fit-content"
       }}
     >
-      <Dropdown data={filterData.Roles} />
-      <Dropdown data={filterData.Employees} />
-      <Dropdown data={filterData.Experience} />
-      <Dropdown data={filterData.Remote} />
-      <Dropdown data={filterData.Salary} />
+      <DropdownBox data={filterData.Roles} />
+      <DropdownBox data={filterData.Employees} />
+      <DropdownBox data={filterData.Experience} />
+      <DropdownBox data={filterData.Remote} />
+      <DropdownBox data={filterData.Salary} />
       <SearchBox placeholder="Search Company Name" />
     </Grid>
   );

@@ -13,10 +13,9 @@ export const fetchSampleData = async (offset: number) => {
     body,
   };
 
-  const response = await fetch(
-    "https://api.weekday.technology/adhoc/getSampleJdJSON",
-    requestOptions
-  );
+  const URL = "https://api.weekday.technology/adhoc/getSampleJdJSON";
+
+  const response = await fetch(URL, requestOptions);
   const result = await response.json();
   return result;
 };
