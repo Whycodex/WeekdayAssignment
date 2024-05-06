@@ -44,3 +44,9 @@ npm install
 Step 6 - After installing all the dependencies, simply run the following command
 
 npm run dev
+
+
+
+# Deployed link
+
+https://whycodexweekday.netlify.app

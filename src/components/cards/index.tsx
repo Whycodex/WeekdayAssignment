@@ -6,13 +6,16 @@ import { setFilteredList, setJdList } from "../../redux/slices/dataSlice";
 import { fetchSampleData } from "../../services/apiService";
 import { isValidJobData } from "../../utils/data";
 import ShimmerEffect from "../shimmer";
+import { RootState } from "../../redux/store";
 
+// Component to display job cards
 function JobCards() {
   const dispatch = useDispatch();
   const { jdList: jdData, filteredList } = useSelector(
-    (store: any) => store.jdData
+    (store: RootState) => store.jdData
   );
 
+  // Function to fetch data
   const fetchData = useCallback(() => {
     fetchSampleData(jdData.length).then((res) => {
       const validData = res.jdList.filter(isValidJobData);
@@ -21,6 +24,7 @@ function JobCards() {
     });
   }, [jdData.length, dispatch]);
 
+  // Effect to fetch data on scroll
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop =
@@ -33,12 +37,14 @@ function JobCards() {
       }
     };
 
+    // Add a comment here
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [fetchData]);
 
+  // Effect to fetch data on component mount
   useEffect(() => {
     fetchData();
   }, []);

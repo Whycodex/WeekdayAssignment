@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilteredList } from "../../redux/slices/dataSlice";
 
+// SearchBox component for filtering job list
 const SearchBox = ({ placeholder }: { placeholder: string }) => {
   const dispatch = useDispatch();
   const { jdList } = useSelector((state: any) => state.jdData);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // Update filtered list when searchQuery changes
   useEffect(() => {
     dispatch(
       setFilteredList(

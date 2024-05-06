@@ -9,25 +9,29 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilteredList } from "../../redux/slices/dataSlice";
+import { RootState } from "../../redux/store";
 
+// DropdownBox component
 const DropdownBox = ({
   data,
 }: {
-  data: { placeholder: string; entries: string[] };
+  data: { placeholder: string; tag: string, entries: string[] };
 }) => {
   const dispatch = useDispatch();
-  const jdData = useSelector((store: any) => store.jdData.jdList);
+  const jdData = useSelector((store: RootState) => store.jdData.jdList);
 
   const [selectedEntries, setSelectedEntries] = useState<string[]>([]);
   const entries = data.entries;
 
+  // Function to handle deletion of selected entry
   function handleDelete(entryToDelete: string) {
     setSelectedEntries((prevEntry) => {
       const value = prevEntry.filter((entry) => entry !== entryToDelete);
       dispatch(
         setFilteredList(
           jdData.filter((job: any) => {
-            return value.length ? value.includes(job.jobRole) : true;
+            const tag = data.tag;
+            return value.length ? value.includes(job[tag].toString()) : true;
           })
         )
       );
@@ -35,13 +39,15 @@ const DropdownBox = ({
     });
   }
 
+  // Function to handle change in selected entries
   const handleChange = (event: SelectChangeEvent<typeof selectedEntries>) => {
     const value = event.target.value as string[];
     setSelectedEntries(() => {
       dispatch(
         setFilteredList(
           jdData.filter((job: any) => {
-            return value.length ? value.includes(job.jobRole) : true;
+            const tag = data.tag;
+            return value.length ? value.includes(job[tag].toString()) : true;
           })
         )
       );

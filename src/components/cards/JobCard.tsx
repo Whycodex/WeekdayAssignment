@@ -14,22 +14,13 @@ import {
   FlashOnOutlined as FlashOnIcon,
 } from "@mui/icons-material";
 
-interface JobData {
-  jdUid: string;
-  logoUrl: string;
-  companyName: string;
-  jobRole: string;
-  location: string;
-  minExp: number;
-  minJdSalary: number;
-  maxJdSalary: number;
-  jobDetailsFromCompany: string;
-}
+import { JobDescription } from "../../redux/slices/dataSlice";
 
 interface JobCardProps {
-  data: JobData;
+  data: JobDescription;
 }
 
+// JobCard component to display job details
 const JobCard = ({ data }: JobCardProps) => {
   return (
     <Card
@@ -47,6 +38,7 @@ const JobCard = ({ data }: JobCardProps) => {
       }}
     >
       <CardContent sx={{ position: "relative" }}>
+        {/* Chip displaying how long ago the job was posted */}
         <Chip
           icon={<HourGlassIcon sx={{ height: 12, width: 12 }} />}
           label="Posted 10 days ago"
@@ -62,12 +54,14 @@ const JobCard = ({ data }: JobCardProps) => {
           }}
         />
         <Grid sx={{ display: "flex", alignItems: "center" }}>
+          {/* Company logo */}
           <Avatar
             src={data.logoUrl}
             alt="logo"
             sx={{ width: 60, height: 60, borderRadius: 0, marginRight: 2 }}
           />
           <Grid>
+            {/* Company name, job role, and location */}
             <Typography
               sx={{ fontSize: 14, color: "#c0c0c0", fontWeight: 600 }}
             >
@@ -78,18 +72,22 @@ const JobCard = ({ data }: JobCardProps) => {
           </Grid>
         </Grid>
         <Grid sx={{ mt: 1, display: "flex" }}>
+          {/* Display estimated salary range */}
           <Typography sx={{ fontSize: 14, color: "#707070" }}>
             Estimated Salary: ₹{data.minJdSalary} - {data.maxJdSalary} LPA
           </Typography>
+          {/* Check icon for salary confirmation */}
           <CheckIcon
             sx={{ width: 18, height: 18, color: "green", marginLeft: 1 }}
           />
         </Grid>
         <Typography sx={{ fontSize: 16, mt: 2 }}>About Company:</Typography>
         <Typography sx={{ fontSize: 14, fontWeight: 600 }}>About us</Typography>
+        {/* Display a snippet of job details from the company */}
         <Typography sx={{ fontSize: 14 }}>
           {data.jobDetailsFromCompany.slice(0, 480)}
         </Typography>
+        {/* Button to view job details */}
         <Typography
           sx={{
             textAlign: "center",
@@ -104,6 +102,7 @@ const JobCard = ({ data }: JobCardProps) => {
         >
           View job
         </Typography>
+        {/* Gradient overlay at the bottom */}
         <Grid
           sx={{
             padding: "100px",
@@ -118,8 +117,10 @@ const JobCard = ({ data }: JobCardProps) => {
         >
           Minimum Experience
         </Typography>
+        {/* Display minimum experience required */}
         <Typography sx={{ fontSize: 14 }}>{data.minExp} years</Typography>
 
+        {/* Button for easy application */}
         <Button
           variant="contained"
           sx={{
