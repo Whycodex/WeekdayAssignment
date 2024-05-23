@@ -47,6 +47,6 @@ npm run dev
 
 
 
-# Deployed link
+# Find deployed link here
 
 https://whycodexweekday.netlify.app
